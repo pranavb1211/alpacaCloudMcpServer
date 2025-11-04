@@ -1,0 +1,7 @@
+alpaca-py
+mcp
+python-dotenv
+alpaca-trade-api
+fastapi
+uvicorn
+requests
