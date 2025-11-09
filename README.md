@@ -13,3 +13,7 @@ pip install -r requirements.txt && python -m src.alpaca_mcp_server.server --tran
 
 And then also remmber when yo uupload the zip file
 Everything should be inside the root of the zip
+
+we are serving this over http because it is deployed on cloud
+
+refer this : https://github.com/alpacahq/alpaca-mcp-server
