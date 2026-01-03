@@ -161,6 +161,7 @@ if not is_pycharm and __name__ == "__main__":
     print(f"MCP Server starting with transport={args.transport}, log_level={log_level} (PyCharm detected: {is_pycharm})")
 
 mcp = FastMCP("alpaca-trading", log_level=log_level)
+mcp.settings.allowed_hosts = ["*"]  # Allow all hosts for simplicity; adjust as needed for security
 
 
 # Check if keys are available
