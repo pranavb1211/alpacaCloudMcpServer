@@ -1,5 +1,5 @@
 alpaca-py
-mcp
+mcp==1.24.0   # or earlier known-good
 python-dotenv
 alpaca-trade-api
 fastapi
