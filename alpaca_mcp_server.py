@@ -161,11 +161,10 @@ if not is_pycharm and __name__ == "__main__":
     print(f"MCP Server starting with transport={args.transport}, log_level={log_level} (PyCharm detected: {is_pycharm})")
 
 mcp = FastMCP("alpaca-trading", log_level=log_level,
-              transport_security=setup_transport_config(enable_dns_rebinding_protection=False))
-mcp.settings.allowed_hosts = ["*"]  # Allow all hosts for simplicity; adjust as needed for security
+              stateless_http=True)
+mcp.settings.allowed_hosts = ["alpacashit-h3edbzd5hgabh6hs.westeurope-01.azurewebsites.net"]  # Allow all hosts for simplicity; adjust as needed for security
 print("ALLOWED_HOSTS FROM CODE:", mcp.settings.allowed_hosts, flush=True)
-print("Transport configuration:", mcp.transport_config, flush=True)
-
+# ----------------------------------------------------------------------------
 
 # Check if keys are available
 if not TRADE_API_KEY or not TRADE_API_SECRET:
