@@ -143,16 +143,17 @@ mcp = FastMCP(
     stateless_http=True,
     log_level=log_level,
     transport_security=TransportSecuritySettings(
-        allowed_hosts=allowed,
+        #allowed_hosts=allowed,
         # enable_dns_rebinding_protection=True,  # keep ON
+        enable_dns_rebinding_protection=False,  # TEMPORARILY DISABLED FOR TESTING
     ),
 )
 
-print("ALLOWED_HOSTS:", allowed, flush=True)
+print("BHCHOOOOOOOOCCC:", allowed, flush=True)
 #===========================================================================
-mcp = FastMCP("alpaca-trading",stateless_http=True, log_level=log_level)
-mcp.settings.allowed_hosts = ["alpacashit-h3edbzd5hgabh6hs.westeurope-01.azurewebsites.net"]
-print("ALLOWED_HOSTS FROM CODE:", mcp.settings.allowed_hosts, flush=True)
+# mcp = FastMCP("alpaca-trading",stateless_http=True, log_level=log_level)
+# mcp.settings.allowed_hosts = ["alpacashit-h3edbzd5hgabh6hs.westeurope-01.azurewebsites.net"]
+# print("ALLOWED_HOSTS FROM CODE:", mcp.settings.allowed_hosts, flush=True)
 # ============================================================================
 
 # Check if keys are available
