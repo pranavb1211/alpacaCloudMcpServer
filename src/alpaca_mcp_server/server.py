@@ -80,6 +80,8 @@ from alpaca.trading.requests import (
 )
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.transport_security import TransportSecuritySettings
+
 
 # Configure Python path for local imports (UserAgentMixin)
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -129,7 +131,29 @@ log_level = "ERROR" if is_pycharm else "INFO"
 log_level = "DEBUG" if DEBUG.lower() == "true" else log_level
 
 # Initialize FastMCP server
-mcp = FastMCP("alpaca-trading", log_level=log_level)
+
+allowed = [
+    "alpacashit-h3edbzd5hgabh6hs.westeurope-01.azurewebsites.net",
+    "alpacashit-h3edbzd5hgabh6hs.westeurope-01.azurewebsites.net:443",
+    "alpacashit-h3edbzd5hgabh6hs.westeurope-01.azurewebsites.net:80",
+]
+
+mcp = FastMCP(
+    "alpaca-trading",
+    stateless_http=True,
+    log_level=log_level,
+    transport_security=TransportSecuritySettings(
+        allowed_hosts=allowed,
+        # enable_dns_rebinding_protection=True,  # keep ON
+    ),
+)
+
+print("ALLOWED_HOSTS:", allowed, flush=True)
+#===========================================================================
+mcp = FastMCP("alpaca-trading",stateless_http=True, log_level=log_level)
+mcp.settings.allowed_hosts = ["alpacashit-h3edbzd5hgabh6hs.westeurope-01.azurewebsites.net"]
+print("ALLOWED_HOSTS FROM CODE:", mcp.settings.allowed_hosts, flush=True)
+# ============================================================================
 
 # Check if keys are available
 # COMMENTED OUT: Allow server to start without credentials for MCP discovery and CLI init
