@@ -15,5 +15,7 @@ And then also remmber when yo uupload the zip file
 Everything should be inside the root of the zip
 
 we are serving this over http because it is deployed on cloud
+The azure web app 1 (Slack event listener) communicates with the azure web app 2 (Alpaca MCP server) over HTTP 
+
 
 refer this : https://github.com/alpacahq/alpaca-mcp-server
